@@ -32,11 +32,12 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         settingbutton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        checkoutbutton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cartbutton = new javax.swing.JButton();
         mainshopbutton = new javax.swing.JButton();
         orderscreenbutton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -48,6 +49,20 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         settingbutton.setText("settings");
+
+        jButton1.setText("checkout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        checkoutbutton.setText("checkout");
+        checkoutbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkoutbuttonActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,8 +83,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         orderscreenbutton.setText("order");
-
-        jButton1.setText("checkout");
+        orderscreenbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderscreenbuttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,11 +99,11 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(141, 141, 141)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(mainshopbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cartbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(orderscreenbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainshopbutton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cartbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                        .addComponent(orderscreenbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(177, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,15 +111,13 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(cartbutton)
-                .addGap(28, 28, 28)
+                .addGap(44, 44, 44)
                 .addComponent(mainshopbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(cartbutton)
+                .addGap(43, 43, 43)
                 .addComponent(orderscreenbutton)
-                .addGap(27, 27, 27)
-                .addComponent(jButton1)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
 
         pack();
@@ -109,11 +125,33 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void cartbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartbuttonActionPerformed
         // TODO add your handling code here:
+         cart cart = new cart();
+            cart.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_cartbuttonActionPerformed
 
     private void mainshopbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainshopbuttonActionPerformed
         // TODO add your handling code here:
+         mainshop mainshop = new mainshop();
+            mainshop.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_mainshopbuttonActionPerformed
+
+    private void orderscreenbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderscreenbuttonActionPerformed
+        // TODO add your handling code here:
+         Order Order = new Order();
+            Order.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_orderscreenbuttonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void checkoutbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutbuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkoutbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +190,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cartbutton;
+    private javax.swing.JButton checkoutbutton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
