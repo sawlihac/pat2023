@@ -51,7 +51,7 @@ public class mainshop extends javax.swing.JFrame {
         descriptionlable = new javax.swing.JLabel();
         picturelable = new javax.swing.JLabel();
         pictureLabel = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        qtySpinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -102,6 +102,8 @@ public class mainshop extends javax.swing.JFrame {
 
         pictureLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/items/conversehighblack.jpeg"))); // NOI18N
 
+        qtySpinner.setModel(new javax.swing.SpinnerNumberModel());
+
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,7 +136,7 @@ public class mainshop extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(qtySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addticartbutton))
                         .addGap(15, 15, 15))))
         );
@@ -155,7 +157,7 @@ public class mainshop extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(descriptionlable, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(qtySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,9 +173,10 @@ public class mainshop extends javax.swing.JFrame {
     private void addticartbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addticartbuttonActionPerformed
         // TODO add your handling code here:
         String name = (String) mainshopdropdown.getSelectedItem();
-        double price= (double) mainshopdropdown.getSelectedItem();
+        int qty= (int)qtySpinner.getValue();
+        
         try {
-            BasketManager.add(name,price);
+            BasketManager.add(name,qty);
             
         } catch (IOException ex) {
             Logger.getLogger(mainshop.class.getName()).log(Level.SEVERE, null, ex);
@@ -243,10 +246,10 @@ public class mainshop extends javax.swing.JFrame {
     private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JButton mainmenuebutton3;
     private javax.swing.JComboBox<String> mainshopdropdown;
     private javax.swing.JLabel pictureLabel;
     private javax.swing.JLabel picturelable;
+    private javax.swing.JSpinner qtySpinner;
     // End of variables declaration//GEN-END:variables
 }

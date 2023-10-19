@@ -5,6 +5,10 @@
 package UI;
 
 import BackEnd.BasketManager;
+import BackEnd.OrderManager;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -19,9 +23,9 @@ public class cart extends javax.swing.JFrame {
     public cart() {
         initComponents();
         
-                 String[] items = BasketManager.getItemName();
-                 DefaultComboBoxModel comboModel = new DefaultComboBoxModel(BasketManager.getItemName());
-               cartdropdown.setModel(comboModel);
+                 String items = BasketManager.getCart();
+                 cartArea.setText(items);
+          
     }
 
     /**
@@ -40,12 +44,15 @@ public class cart extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         checkoutbutton = new javax.swing.JButton();
         mainmenuebutton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        cartdropdown = new javax.swing.JComboBox<>();
+        costlabel = new javax.swing.JLabel();
+        qtylabel = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        cartArea = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -71,6 +78,10 @@ public class cart extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("checkout");
@@ -89,16 +100,13 @@ public class cart extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        costlabel.setText("cost");
 
-        cartdropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cartdropdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cartdropdownActionPerformed(evt);
-            }
-        });
+        qtylabel.setText("qty");
+
+        cartArea.setColumns(20);
+        cartArea.setRows(5);
+        jScrollPane3.setViewportView(cartArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,15 +122,16 @@ public class cart extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 150, Short.MAX_VALUE)))
+                        .addGap(0, 150, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(qtylabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costlabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(cartdropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -130,11 +139,13 @@ public class cart extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(25, 25, 25)
-                .addComponent(cartdropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(costlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(qtylabel)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkoutbutton)
                     .addComponent(mainmenuebutton1))
@@ -152,14 +163,13 @@ public class cart extends javax.swing.JFrame {
     }//GEN-LAST:event_mainmenuebutton1ActionPerformed
 
     private void checkoutbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutbuttonActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        
+        
+        
+        
 
     }//GEN-LAST:event_checkoutbuttonActionPerformed
-
-    private void cartdropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartdropdownActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_cartdropdownActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,18 +207,21 @@ public class cart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cartdropdown;
+    private javax.swing.JTextArea cartArea;
     private javax.swing.JButton checkoutbutton;
+    private javax.swing.JLabel costlabel;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton mainmenuebutton1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
+    private javax.swing.JLabel qtylabel;
     // End of variables declaration//GEN-END:variables
 }

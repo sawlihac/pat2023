@@ -4,6 +4,9 @@
  */
 package UI;
 
+import BackEnd.OrderManager;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author csawl
@@ -15,6 +18,9 @@ public class Order extends javax.swing.JFrame {
      */
     public Order() {
         initComponents();
+        String[] items = OrderManager.getItem();
+                 DefaultComboBoxModel comboModel = new DefaultComboBoxModel(OrderManager.getItem());
+               OrderDropdown.setModel(comboModel);
     }
 
     /**
@@ -27,16 +33,14 @@ public class Order extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         mainmenuebutton4 = new javax.swing.JButton();
+        OrderDropdown = new javax.swing.JComboBox<>();
 
         jButton1.setText("jButton1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("orders");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -45,10 +49,23 @@ public class Order extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
+        jLabel2.setText("jLabel2");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("orders");
+
         mainmenuebutton4.setText("main menue");
         mainmenuebutton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainmenuebutton4ActionPerformed(evt);
+            }
+        });
+
+        OrderDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        OrderDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrderDropdownActionPerformed(evt);
             }
         });
 
@@ -60,23 +77,22 @@ public class Order extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(mainmenuebutton4))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(OrderDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mainmenuebutton4)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 128, 128)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
+                .addComponent(OrderDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
                 .addComponent(mainmenuebutton4)
                 .addGap(36, 36, 36))
         );
@@ -90,6 +106,10 @@ public class Order extends javax.swing.JFrame {
             MainMenu.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_mainmenuebutton4ActionPerformed
+
+    private void OrderDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderDropdownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OrderDropdownActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,8 +147,10 @@ public class Order extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> OrderDropdown;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton mainmenuebutton4;

@@ -28,7 +28,7 @@ public class ItemManager {
 
                 count++;
             }
-
+ 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -50,7 +50,7 @@ public class ItemManager {
                 String name = linesc.next();
                 String description = linesc.next();
                 String pictureLocation = linesc.next();
-                double cost = linesc.nextDouble();
+                int cost = linesc.nextInt();
                 itemNames[currentLine] = name;
                 currentLine++;
             }
@@ -77,7 +77,7 @@ public class ItemManager {
                 String name = linesc.next();
                 String description = linesc.next();
                 String pictureLocation = linesc.next();
-                double cost = linesc.nextDouble();
+                int cost = linesc.nextInt();
                 if (name.equalsIgnoreCase(nameToCheck)) {
                     descriptionOutput = description;
                 }
@@ -89,6 +89,33 @@ public class ItemManager {
         return descriptionOutput;
     }
 
+    public static double getItemCost(String nameToCheck) {
+        double outputcost = 0;
+
+        try {
+            String line = "";
+
+            File F = new File("Data\\items.txt");
+            Scanner filesc = new Scanner(F);
+            while (filesc.hasNextLine()) {
+                line = filesc.nextLine();
+                Scanner linesc = new Scanner(line).useDelimiter("#");
+
+                String name = linesc.next();
+                String description = linesc.next();
+                String pictureLocation = linesc.next();
+                 int cost=linesc.nextInt();
+                if (name.equalsIgnoreCase(nameToCheck)) {
+                    outputcost = cost;
+                }
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return outputcost;
+    }
+    
     public static String getItemPicture(String nameToCheck) {
         String pictureOutput = "";
 
@@ -104,7 +131,7 @@ public class ItemManager {
                 String name = linesc.next();
                 String description = linesc.next();
                 String pictureLocation = linesc.next();
-                 double cost=linesc.nextDouble();
+                 int cost=linesc.nextInt();
                 if (name.equalsIgnoreCase(nameToCheck)) {
                     pictureOutput = pictureLocation;
                 }
