@@ -77,6 +77,11 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="qtylabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="qty"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -115,10 +120,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="qtylabel" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="costlabel" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="costlabel" min="-2" pref="96" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -139,9 +141,7 @@
               <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="43" max="32767" attributes="0"/>
               <Component id="costlabel" min="-2" pref="16" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="qtylabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="checkoutbutton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="mainmenuebutton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -176,11 +176,6 @@
     <Component class="javax.swing.JLabel" name="costlabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="cost"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="qtylabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="qty"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">

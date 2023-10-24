@@ -139,9 +139,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void orderscreenbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderscreenbuttonActionPerformed
         // TODO add your handling code here:
-         Order Order = new Order();
-            Order.setVisible(true);
-            this.dispose();
+        
     }//GEN-LAST:event_orderscreenbuttonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -5,8 +5,11 @@
 package UI;
 
 import BackEnd.BasketManager;
-import BackEnd.OrderManager;
+import BackEnd.ItemManager;
+
+import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -25,6 +28,9 @@ public class cart extends javax.swing.JFrame {
         
                  String items = BasketManager.getCart();
                  cartArea.setText(items);
+               String Total = BasketManager.getcosT();
+               costlabel.setText(Total);
+                 
           
     }
 
@@ -46,11 +52,11 @@ public class cart extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        qtylabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         checkoutbutton = new javax.swing.JButton();
         mainmenuebutton1 = new javax.swing.JButton();
         costlabel = new javax.swing.JLabel();
-        qtylabel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         cartArea = new javax.swing.JTextArea();
 
@@ -82,6 +88,8 @@ public class cart extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        qtylabel.setText("qty");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("checkout");
@@ -101,8 +109,6 @@ public class cart extends javax.swing.JFrame {
         });
 
         costlabel.setText("cost");
-
-        qtylabel.setText("qty");
 
         cartArea.setColumns(20);
         cartArea.setRows(5);
@@ -125,9 +131,7 @@ public class cart extends javax.swing.JFrame {
                         .addGap(0, 150, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(qtylabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(costlabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(costlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
@@ -143,9 +147,7 @@ public class cart extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(costlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(qtylabel)
-                .addGap(38, 38, 38)
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkoutbutton)
                     .addComponent(mainmenuebutton1))
@@ -164,6 +166,10 @@ public class cart extends javax.swing.JFrame {
 
     private void checkoutbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutbuttonActionPerformed
         // TODO add your handling code here
+        
+        
+        
+        
         
         
         
